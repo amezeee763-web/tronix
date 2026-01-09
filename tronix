@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tronix AI</title>
+  <style>
+    body {
+      background:#0f172a;
+      color:white;
+      font-family: Arial;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+    .chatbox {
+      width:350px;
+      background:#020617;
+      padding:15px;
+      border-radius:10px;
+    }
+    .chat {
+      height:300px;
+      overflow-y:auto;
+      border:1px solid #334155;
+      padding:10px;
+      margin-bottom:10px;
+      font-size:14px;
+    }
+    input {
+      width:75%;
+      padding:8px;
+      border:none;
+      border-radius:5px;
+    }
+    button {
+      padding:8px 10px;
+      border:none;
+      background:#22c55e;
+      border-radius:5px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chatbox">
+    <h3>🤖 Tronix AI</h3>
+    <div class="chat" id="chat"></div>
+
+    <input id="msg" placeholder="Ask me anything..." />
+    <button onclick="send()">Send</button>
+  </div>
+
+  <script>
+    function send() {
+      let msg = document.getElementById("msg").value.toLowerCase();
+      let chat = document.getElementById("chat");
+
+      if(msg === "") return;
+
+      chat.innerHTML += "<p><b>You:</b> " + msg + "</p>";
+
+      let reply = "Sorry, I am learning 🤔";
+
+      if(msg.includes("hi") || msg.includes("hello")) reply = "Hello 👋 How can I help you?";
+      else if(msg.includes("name")) reply = "My name is Tronix AI 🤖";
+      else if(msg.includes("who made you")) reply = "I was created by Ameen 💻";
+      else if(msg.includes("bye")) reply = "Goodbye 👋 Have a nice day!";
+      else if(msg.includes("help")) reply = "I can chat and answer simple questions 😊";
+
+      chat.innerHTML += "<p><b>Tronix AI:</b> " + reply + "</p>";
+      document.getElementById("msg").value = "";
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
